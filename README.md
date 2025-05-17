@@ -2,7 +2,7 @@
 
 A simple and powerful document conversion server for Cursor IDE using Pandoc.
 
-## When to use this (Jobs To Be Done)
+## When to use this
 
 ✅ **When you need to convert documents between different formats**  
 Converting markdown to Word, HTML to PDF, or any combination of supported formats.
@@ -29,8 +29,9 @@ Built on the industry-standard Pandoc conversion engine.
 ### Prerequisites
 
 - [Pandoc](https://pandoc.org/installing.html) must be installed and available in your PATH
-  - For Windows, you can use `install_pandoc.bat` script to install it automatically
-  - Or download and install manually from the [official website](https://pandoc.org/installing.html)
+  - Download and install manually from the [official website](https://pandoc.org/installing.html)
+  - **Important**: Restart your computer after installing Pandoc
+  - You can verify installation by running `pandoc --version` in terminal
 - For PDF generation, a LaTeX distribution is required (MiKTeX recommended for Windows)
 
 ### Installation
@@ -38,7 +39,7 @@ Built on the industry-standard Pandoc conversion engine.
 #### Option 1: Using the provided build script (Windows)
 
 1. Clone this repository
-2. Run `install_pandoc.bat` if Pandoc is not installed
+2. Make sure Pandoc is installed manually from the official website
 3. Run `build.bat` to build the server
 4. The executable `pandoc-mcp-go.exe` will be created in the project directory
 
