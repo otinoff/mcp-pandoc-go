@@ -1,17 +1,17 @@
-# Пример документа для конвертации
+# Sample Document for Conversion
 
-## Заголовок второго уровня
+## Level 2 Heading
 
-Это пример документа в формате Markdown, который можно конвертировать в другие форматы с помощью **mcp-pandoc-go**.
+This is an example document in Markdown format that can be converted to other formats using **mcp-pandoc-go**.
 
-### Список возможностей
+### List of Features
 
-- Конвертация в HTML
-- Конвертация в PDF
-- Конвертация в DOCX
-- Конвертация в другие форматы
+- Conversion to HTML
+- Conversion to PDF
+- Conversion to DOCX
+- Conversion to other formats
 
-### Пример кода
+### Code Example
 
 ```go
 func main() {
@@ -19,17 +19,17 @@ func main() {
 }
 ```
 
-### Таблица форматов
+### Format Table
 
-| Формат   | Расширение | Поддержка |
-|----------|------------|-----------|
-| Markdown | .md        | Полная    |
-| HTML     | .html      | Полная    |
-| PDF      | .pdf       | Требует TeX |
-| DOCX     | .docx      | Полная    |
+| Format   | Extension | Support |
+|----------|-----------|---------|
+| Markdown | .md       | Full    |
+| HTML     | .html     | Full    |
+| PDF      | .pdf      | Requires TeX |
+| DOCX     | .docx     | Full    |
 
-## Ссылки и изображения
+## Links and Images
 
-[Pandoc - универсальный конвертер документов](https://pandoc.org/)
+[Pandoc - universal document converter](https://pandoc.org/)
 
-![Условное изображение](https://via.placeholder.com/150) 
+![Sample image](https://via.placeholder.com/150) 

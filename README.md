@@ -29,9 +29,20 @@ Built on the industry-standard Pandoc conversion engine.
 ### Prerequisites
 
 - [Pandoc](https://pandoc.org/installing.html) must be installed and available in your PATH
-- Or set `PANDOC_PATH` environment variable to the Pandoc executable
+  - For Windows, you can use `install_pandoc.bat` script to install it automatically
+  - Or download and install manually from the [official website](https://pandoc.org/installing.html)
+- For PDF generation, a LaTeX distribution is required (MiKTeX recommended for Windows)
 
 ### Installation
+
+#### Option 1: Using the provided build script (Windows)
+
+1. Clone this repository
+2. Run `install_pandoc.bat` if Pandoc is not installed
+3. Run `build.bat` to build the server
+4. The executable `pandoc-mcp-go.exe` will be created in the project directory
+
+#### Option 2: Manual build
 
 1. Clone this repository
 2. Build the server:
@@ -42,6 +53,25 @@ Built on the industry-standard Pandoc conversion engine.
    ```
    ./pandoc-server.exe
    ```
+
+## Integration with Cursor IDE
+
+To integrate with Cursor IDE, add the following to your MCP configuration file (`mcp.json`):
+
+```json
+// In the "servers" section
+"pandoc_mcp_go": {
+  "type": "stdio",
+  "command": "C:/SnowWhiteAI/MCP_servers/mcp-pandoc-go/pandoc-mcp-go.exe",
+  "cwd": "C:/SnowWhiteAI/MCP_servers/mcp-pandoc-go"
+}
+
+// In the "roots" section
+"pandoc": {
+  "type": "document-converter",
+  "server": "pandoc_mcp_go"
+}
+```
 
 ## Usage Examples
 
@@ -62,6 +92,12 @@ err := converter.ConvertStringToFile("# Hello World", "markdown", "docx", "outpu
 ```go
 err := converter.ConvertFile("input.md", "markdown", "pdf", "output.pdf")
 ```
+
+## Example Scripts
+
+Check the `examples` directory for sample files and scripts:
+- `sample.md` - Sample markdown document for testing
+- `convert_example.ps1` - PowerShell script demonstrating how to use the server
 
 ## License
 
