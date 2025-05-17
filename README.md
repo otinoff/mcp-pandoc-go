@@ -24,7 +24,38 @@ Built on the industry-standard Pandoc conversion engine.
 - Multiple conversion modes: string-to-string, string-to-file, file-to-file
 - Automatic copyright addition to all generated documents
 
-## Getting Started
+## Quick Installation
+
+We provide automated installation scripts for all major operating systems:
+
+### Windows
+
+1. Download `install_windows.bat` from this repository
+2. Right-click and select "Run as administrator"
+3. Follow the on-screen instructions
+
+### macOS
+
+1. Download `install_macos.sh` from this repository
+2. Open Terminal and navigate to the download location
+3. Run: `chmod +x install_macos.sh && sudo ./install_macos.sh`
+4. Follow the on-screen instructions
+
+### Linux (Ubuntu/Debian)
+
+1. Download `install_linux.sh` from this repository
+2. Open Terminal and navigate to the download location
+3. Run: `chmod +x install_linux.sh && sudo ./install_linux.sh`
+4. Follow the on-screen instructions
+
+The installation scripts will:
+- Check for required dependencies
+- Create the necessary directories
+- Clone the repository
+- Build the application
+- Configure Cursor IDE
+
+## Manual Installation
 
 ### Prerequisites
 
@@ -33,17 +64,9 @@ Built on the industry-standard Pandoc conversion engine.
   - **Important**: Restart your computer after installing Pandoc
   - You can verify installation by running `pandoc --version` in terminal
 - For PDF generation, a LaTeX distribution is required (MiKTeX recommended for Windows)
+- Git and Go programming language must be installed
 
-### Installation
-
-#### Option 1: Using the provided build script (Windows)
-
-1. Clone this repository
-2. Make sure Pandoc is installed manually from the official website
-3. Run `build.bat` to build the server
-4. The executable `pandoc-mcp-go.exe` will be created in the project directory
-
-#### Option 2: Manual build
+### Manual Build
 
 1. Clone this repository
 2. Build the server:
