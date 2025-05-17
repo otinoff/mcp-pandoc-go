@@ -38,13 +38,34 @@ temp/
 
 # Debug logs
 *.log
+logs/
 debug/
 
 # OS specific files
 .DS_Store
 Thumbs.db
 
+# Exclude test output files but keep test directory
+/test/*.pdf
+/test/*.docx
+/test/*.doc
+/test/*.html
+/test/*.epub
+/test/*.rst
+/test/*.txt
+
+# Exclude example output files
+/examples/*.pdf
+/examples/*.docx
+/examples/*.doc
+/examples/*.html
+/examples/*.epub
+/examples/*.rst
+/examples/*.txt
+
 # Project specific
 doc/
 DOC/
-/[Dd][Oo][Cc]/ 
+/[Dd][Oo][Cc]/
+
+ 
