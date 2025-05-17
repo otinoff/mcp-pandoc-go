@@ -2,6 +2,7 @@ package main
 
 import (
 	"os"
+	"path/filepath"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"github.com/mark3labs/mcp-go/server"
@@ -10,9 +11,49 @@ import (
 )
 
 func main() {
+	// Проверяем и устанавливаем директорию логов
+	logDir := os.Getenv("LOG_DIR")
+	if logDir == "" {
+		// Если переменная не установлена, используем директорию логов внутри проекта
+		exePath, err := os.Executable()
+		if err == nil {
+			exeDir := filepath.Dir(exePath)
+			logDir = filepath.Join(exeDir, "logs")
+		} else {
+			// Если не удалось получить путь к исполняемому файлу, используем текущую директорию
+			logDir = "logs"
+		}
+		os.Setenv("LOG_DIR", logDir)
+	}
+
+	// Убедимся, что директория логов существует
+	if err := os.MkdirAll(logDir, 0755); err != nil {
+		os.Stderr.WriteString("ERROR: Failed to create log directory: " + err.Error() + "\n")
+	}
+
 	// Initialize logging
 	logger := logging.NewLogger("[MCP-Pandoc] ", os.Stderr)
+	logging.InitGlobalLogger("[MCP-Pandoc] ", os.Stderr)
 	logger.Info("Starting MCP-Pandoc server")
+	logger.Info("Log directory set to: %s", logDir)
+
+	// Set detailed logging level if specified
+	logLevel := os.Getenv("LOG_LEVEL")
+	if logLevel != "" {
+		logger.Info("Log level set to %s", logLevel)
+	} else {
+		// По умолчанию устанавливаем уровень debug для более подробного логирования
+		os.Setenv("LOG_LEVEL", "debug")
+		logLevel = "debug"
+		logger.Info("Log level defaulted to debug")
+	}
+
+	// Запись тестового сообщения для проверки логирования
+	logger.DetailedInfo("=== LOGGING TEST: Detailed Info message ===")
+	logger.Debug("=== LOGGING TEST: Debug message ===")
+	logger.Trace("=== LOGGING TEST: Trace message ===")
+	logger.FileOperation("TEST", logDir, true, "Проверка записи операций с файлами")
+	logger.ConversionOperation("test", "test", "Проверка записи операций конвертации", true)
 
 	// Create MCP server
 	s := server.NewMCPServer(
